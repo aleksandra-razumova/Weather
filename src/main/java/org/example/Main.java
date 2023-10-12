@@ -21,10 +21,11 @@ public class Main {
         //Вывод погоды на экран на ближайшие 5 дней
         for (Element name : names) {
             String dateString = name.select("th[id=dt]").text(); //Получаем текстовое значение заголовка
-            String date = Parser.getDateFromString(dateString);  //Переводим заданный формат даты
+            String date = Parser.getDateFromString(dateString);  //Переводим в заданный формат даты
             System.out.printf("%-10s %-70s %-15s %-10s %-15s %-15s",date, "Явления","Температура","Давление",
                     "Влажность","Ветер"); //Печатаем отформатированную шапку таблицы
             System.out.println();
+            //Печатаем элементы, изменяя значение индекса, для перехода на сл день.
             index += Parser.printFourValues(values, index);
         }
     }
